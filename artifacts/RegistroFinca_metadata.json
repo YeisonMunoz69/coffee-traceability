@@ -1,0 +1,171 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "batchId",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "batchHash",
+						"type": "bytes32"
+					}
+				],
+				"name": "BatchRegistered",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"name": "batches",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "batchId",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "producerName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "farm",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "locationGPS",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "tastingResults",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "humidityAnalysis",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_batchId",
+						"type": "string"
+					}
+				],
+				"name": "getBatchHash",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_batchId",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_producerName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_farm",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_locationGPS",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_tastingResults",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_humidityAnalysis",
+						"type": "string"
+					}
+				],
+				"name": "registerBatch",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"RegistroFinca.sol": "RegistroFinca"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"RegistroFinca.sol": {
+			"keccak256": "0xd1be4bc9444a191a7016dedeb29a8d4bc9da4ea81e1ebd81a358c5670747c762",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://a1b58eb97ea8403edd23c52b55fb4252ec7e8dee40753b4c7452b41de70b9381",
+				"dweb:/ipfs/QmaSUMtUHCDTLsDh6UbAb11MucqUqgW1b2Z1xzgprTeYpn"
+			]
+		}
+	},
+	"version": 1
+}
