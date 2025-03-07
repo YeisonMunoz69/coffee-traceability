@@ -6,22 +6,33 @@
 	"output": {
 		"abi": [
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_distribucionAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
 				"anonymous": false,
 				"inputs": [
 					{
 						"indexed": false,
 						"internalType": "string",
-						"name": "batchId",
+						"name": "productId",
 						"type": "string"
 					},
 					{
 						"indexed": false,
 						"internalType": "bytes32",
-						"name": "batchHash",
+						"name": "saleHash",
 						"type": "bytes32"
 					}
 				],
-				"name": "BatchRegistered",
+				"name": "SaleRecorded",
 				"type": "event"
 			},
 			{
@@ -32,61 +43,12 @@
 						"type": "uint256"
 					}
 				],
-				"name": "allBatchIds",
+				"name": "allSoldProductIds",
 				"outputs": [
 					{
 						"internalType": "string",
 						"name": "",
 						"type": "string"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "string",
-						"name": "",
-						"type": "string"
-					}
-				],
-				"name": "batches",
-				"outputs": [
-					{
-						"internalType": "string",
-						"name": "batchId",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "producerName",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "farm",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "locationGPS",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "tastingResults",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "humidityAnalysis",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "timestamp",
-						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -94,7 +56,20 @@
 			},
 			{
 				"inputs": [],
-				"name": "getAllBatchIds",
+				"name": "distribucionAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getAllSoldProductIds",
 				"outputs": [
 					{
 						"internalType": "string[]",
@@ -109,11 +84,11 @@
 				"inputs": [
 					{
 						"internalType": "string",
-						"name": "_batchId",
+						"name": "_productId",
 						"type": "string"
 					}
 				],
-				"name": "getBatchHash",
+				"name": "getSaleHash",
 				"outputs": [
 					{
 						"internalType": "bytes32",
@@ -128,41 +103,31 @@
 				"inputs": [
 					{
 						"internalType": "string",
-						"name": "_batchId",
+						"name": "_productId",
 						"type": "string"
 					}
 				],
-				"name": "getBatchInfo",
+				"name": "getSaleInfo",
 				"outputs": [
 					{
 						"internalType": "string",
-						"name": "producerName",
+						"name": "buyerInfo",
 						"type": "string"
 					},
 					{
-						"internalType": "string",
-						"name": "farm",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "locationGPS",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "tastingResults",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "humidityAnalysis",
-						"type": "string"
+						"internalType": "uint256",
+						"name": "saleAmount",
+						"type": "uint256"
 					},
 					{
 						"internalType": "uint256",
 						"name": "timestamp",
 						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "previousStageHash",
+						"type": "bytes32"
 					}
 				],
 				"stateMutability": "view",
@@ -170,7 +135,7 @@
 			},
 			{
 				"inputs": [],
-				"name": "getTotalBatches",
+				"name": "getTotalSoldProducts",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -185,38 +150,62 @@
 				"inputs": [
 					{
 						"internalType": "string",
-						"name": "_batchId",
+						"name": "_productId",
 						"type": "string"
 					},
 					{
 						"internalType": "string",
-						"name": "_producerName",
+						"name": "_buyerInfo",
 						"type": "string"
 					},
 					{
-						"internalType": "string",
-						"name": "_farm",
-						"type": "string"
-					},
+						"internalType": "uint256",
+						"name": "_saleAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "recordSale",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
 					{
 						"internalType": "string",
-						"name": "_locationGPS",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "_tastingResults",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "_humidityAnalysis",
+						"name": "",
 						"type": "string"
 					}
 				],
-				"name": "registerBatch",
-				"outputs": [],
-				"stateMutability": "nonpayable",
+				"name": "saleData",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "productId",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "buyerInfo",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "saleAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "previousStageHash",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			}
 		],
@@ -233,7 +222,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"1-RegistroFinca.sol": "RegistroFinca"
+			"6-Venta.sol": "Venta"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -247,12 +236,20 @@
 		"remappings": []
 	},
 	"sources": {
-		"1-RegistroFinca.sol": {
-			"keccak256": "0x41cf6d5456eaba8cf9e9b4bfddfc3ed80d85da34082a9bf50424e25b8ffc286f",
+		"0-Interfaces.sol": {
+			"keccak256": "0xe9bc3a1b5f64314987f783c9a2bae2b7e0c32205abc25994ac69dd0d7933ba02",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5bfc63ac0e122ede55e1d67175609653e444cdb8992f624c6f530745f01434e2",
-				"dweb:/ipfs/QmULj6tsk2XywQfqBRCEYPYGS9gvW17jG4ve87d3JfWzfS"
+				"bzz-raw://02997706db66fbadf3439d71f33f493f7f9d8cefc720d24a57ddd70440b717c4",
+				"dweb:/ipfs/QmTenyEr3YB1BKrGjqsBCugJsX8u2E5BqBTuzYe8T6YBUq"
+			]
+		},
+		"6-Venta.sol": {
+			"keccak256": "0x62810f53dedcd2e0f98413dd6b9d80d82df4e093e03940ba2a3171ed557fd9e6",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5834908aad273305f5193263e11a0c0c617fb8f6c8e11afae1ee09e4afbecc56",
+				"dweb:/ipfs/QmThwEPLMBVHaBqsFF6uVZmfkm8gtZUo17uxQnpiRJgbAx"
 			]
 		}
 	},

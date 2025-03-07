@@ -6,6 +6,17 @@
 	"output": {
 		"abi": [
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_registroFincaAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
 				"anonymous": false,
 				"inputs": [
 					{
@@ -17,11 +28,11 @@
 					{
 						"indexed": false,
 						"internalType": "bytes32",
-						"name": "batchHash",
+						"name": "processingHash",
 						"type": "bytes32"
 					}
 				],
-				"name": "BatchRegistered",
+				"name": "ProcessingUpdated",
 				"type": "event"
 			},
 			{
@@ -32,61 +43,12 @@
 						"type": "uint256"
 					}
 				],
-				"name": "allBatchIds",
+				"name": "allProcessedBatchIds",
 				"outputs": [
 					{
 						"internalType": "string",
 						"name": "",
 						"type": "string"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "string",
-						"name": "",
-						"type": "string"
-					}
-				],
-				"name": "batches",
-				"outputs": [
-					{
-						"internalType": "string",
-						"name": "batchId",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "producerName",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "farm",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "locationGPS",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "tastingResults",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "humidityAnalysis",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "timestamp",
-						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -94,7 +56,7 @@
 			},
 			{
 				"inputs": [],
-				"name": "getAllBatchIds",
+				"name": "getAllProcessedBatchIds",
 				"outputs": [
 					{
 						"internalType": "string[]",
@@ -113,7 +75,7 @@
 						"type": "string"
 					}
 				],
-				"name": "getBatchHash",
+				"name": "getProcessingHash",
 				"outputs": [
 					{
 						"internalType": "bytes32",
@@ -132,37 +94,27 @@
 						"type": "string"
 					}
 				],
-				"name": "getBatchInfo",
+				"name": "getProcessingInfo",
 				"outputs": [
 					{
 						"internalType": "string",
-						"name": "producerName",
+						"name": "processingDetails",
 						"type": "string"
 					},
 					{
 						"internalType": "string",
-						"name": "farm",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "locationGPS",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "tastingResults",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "humidityAnalysis",
+						"name": "certifications",
 						"type": "string"
 					},
 					{
 						"internalType": "uint256",
 						"name": "timestamp",
 						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "previousStageHash",
+						"type": "bytes32"
 					}
 				],
 				"stateMutability": "view",
@@ -170,7 +122,7 @@
 			},
 			{
 				"inputs": [],
-				"name": "getTotalBatches",
+				"name": "getTotalProcessedBatches",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -185,36 +137,73 @@
 				"inputs": [
 					{
 						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"name": "processData",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "batchId",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "processingDetails",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "certifications",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "previousStageHash",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "registroFincaAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
 						"name": "_batchId",
 						"type": "string"
 					},
 					{
 						"internalType": "string",
-						"name": "_producerName",
+						"name": "_processingDetails",
 						"type": "string"
 					},
 					{
 						"internalType": "string",
-						"name": "_farm",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "_locationGPS",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "_tastingResults",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "_humidityAnalysis",
+						"name": "_certifications",
 						"type": "string"
 					}
 				],
-				"name": "registerBatch",
+				"name": "updateProcessing",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -233,7 +222,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"1-RegistroFinca.sol": "RegistroFinca"
+			"2-Procesamiento.sol": "Procesamiento"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -247,12 +236,20 @@
 		"remappings": []
 	},
 	"sources": {
-		"1-RegistroFinca.sol": {
-			"keccak256": "0x41cf6d5456eaba8cf9e9b4bfddfc3ed80d85da34082a9bf50424e25b8ffc286f",
+		"0-Interfaces.sol": {
+			"keccak256": "0xf222903121f93a286780cc00d86b10b60d76be099ed3a913f6d9d70394df98df",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5bfc63ac0e122ede55e1d67175609653e444cdb8992f624c6f530745f01434e2",
-				"dweb:/ipfs/QmULj6tsk2XywQfqBRCEYPYGS9gvW17jG4ve87d3JfWzfS"
+				"bzz-raw://9fc286bb480fe058545011ab033d7e4550ca72eb857f3c4b511445fcbf24ae03",
+				"dweb:/ipfs/QmcqbDrT12apyCRCyZvZAPhGQ9dLzRLP6xLVuQ32yvsb1f"
+			]
+		},
+		"2-Procesamiento.sol": {
+			"keccak256": "0x2a459c2d66804d99ddb6b889159fb6d9e22c228df4574c251fdc9f06e4b7555b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d6e106374a9fb486f9d7ae2f50be570b7c65bad4426728e5899f6ecbe1718559",
+				"dweb:/ipfs/QmNwoghDq59ibDkxWqdQib6Am5MsVD78DNTNx8EGdCVErZ"
 			]
 		}
 	},

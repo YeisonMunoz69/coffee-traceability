@@ -1,0 +1,65 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_batchId",
+						"type": "string"
+					}
+				],
+				"name": "getConsolidationHash",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"0-Interfaces.sol": "IConsolidacion"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"0-Interfaces.sol": {
+			"keccak256": "0xe9bc3a1b5f64314987f783c9a2bae2b7e0c32205abc25994ac69dd0d7933ba02",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://02997706db66fbadf3439d71f33f493f7f9d8cefc720d24a57ddd70440b717c4",
+				"dweb:/ipfs/QmTenyEr3YB1BKrGjqsBCugJsX8u2E5BqBTuzYe8T6YBUq"
+			]
+		}
+	},
+	"version": 1
+}

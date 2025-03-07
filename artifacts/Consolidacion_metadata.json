@@ -6,6 +6,17 @@
 	"output": {
 		"abi": [
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_procesamientoAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
 				"anonymous": false,
 				"inputs": [
 					{
@@ -17,11 +28,11 @@
 					{
 						"indexed": false,
 						"internalType": "bytes32",
-						"name": "batchHash",
+						"name": "consolidationHash",
 						"type": "bytes32"
 					}
 				],
-				"name": "BatchRegistered",
+				"name": "BatchConsolidated",
 				"type": "event"
 			},
 			{
@@ -32,7 +43,7 @@
 						"type": "uint256"
 					}
 				],
-				"name": "allBatchIds",
+				"name": "allConsolidatedBatchIds",
 				"outputs": [
 					{
 						"internalType": "string",
@@ -47,11 +58,34 @@
 				"inputs": [
 					{
 						"internalType": "string",
+						"name": "_batchId",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_totalKG",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_exportDocs",
+						"type": "string"
+					}
+				],
+				"name": "consolidateBatch",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
 						"name": "",
 						"type": "string"
 					}
 				],
-				"name": "batches",
+				"name": "consolidationData",
 				"outputs": [
 					{
 						"internalType": "string",
@@ -59,34 +93,24 @@
 						"type": "string"
 					},
 					{
-						"internalType": "string",
-						"name": "producerName",
-						"type": "string"
+						"internalType": "uint256",
+						"name": "totalKG",
+						"type": "uint256"
 					},
 					{
 						"internalType": "string",
-						"name": "farm",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "locationGPS",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "tastingResults",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "humidityAnalysis",
+						"name": "exportDocs",
 						"type": "string"
 					},
 					{
 						"internalType": "uint256",
 						"name": "timestamp",
 						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "previousStageHash",
+						"type": "bytes32"
 					}
 				],
 				"stateMutability": "view",
@@ -94,7 +118,7 @@
 			},
 			{
 				"inputs": [],
-				"name": "getAllBatchIds",
+				"name": "getAllConsolidatedBatchIds",
 				"outputs": [
 					{
 						"internalType": "string[]",
@@ -113,7 +137,7 @@
 						"type": "string"
 					}
 				],
-				"name": "getBatchHash",
+				"name": "getConsolidationHash",
 				"outputs": [
 					{
 						"internalType": "bytes32",
@@ -132,37 +156,27 @@
 						"type": "string"
 					}
 				],
-				"name": "getBatchInfo",
+				"name": "getConsolidationInfo",
 				"outputs": [
 					{
-						"internalType": "string",
-						"name": "producerName",
-						"type": "string"
+						"internalType": "uint256",
+						"name": "totalKG",
+						"type": "uint256"
 					},
 					{
 						"internalType": "string",
-						"name": "farm",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "locationGPS",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "tastingResults",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "humidityAnalysis",
+						"name": "exportDocs",
 						"type": "string"
 					},
 					{
 						"internalType": "uint256",
 						"name": "timestamp",
 						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "previousStageHash",
+						"type": "bytes32"
 					}
 				],
 				"stateMutability": "view",
@@ -170,7 +184,7 @@
 			},
 			{
 				"inputs": [],
-				"name": "getTotalBatches",
+				"name": "getTotalConsolidatedBatches",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -182,41 +196,16 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
+				"inputs": [],
+				"name": "procesamientoAddress",
+				"outputs": [
 					{
-						"internalType": "string",
-						"name": "_batchId",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "_producerName",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "_farm",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "_locationGPS",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "_tastingResults",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "_humidityAnalysis",
-						"type": "string"
+						"internalType": "address",
+						"name": "",
+						"type": "address"
 					}
 				],
-				"name": "registerBatch",
-				"outputs": [],
-				"stateMutability": "nonpayable",
+				"stateMutability": "view",
 				"type": "function"
 			}
 		],
@@ -233,7 +222,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"1-RegistroFinca.sol": "RegistroFinca"
+			"3-Consolidacion.sol": "Consolidacion"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -247,12 +236,20 @@
 		"remappings": []
 	},
 	"sources": {
-		"1-RegistroFinca.sol": {
-			"keccak256": "0x41cf6d5456eaba8cf9e9b4bfddfc3ed80d85da34082a9bf50424e25b8ffc286f",
+		"0-Interfaces.sol": {
+			"keccak256": "0xf222903121f93a286780cc00d86b10b60d76be099ed3a913f6d9d70394df98df",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5bfc63ac0e122ede55e1d67175609653e444cdb8992f624c6f530745f01434e2",
-				"dweb:/ipfs/QmULj6tsk2XywQfqBRCEYPYGS9gvW17jG4ve87d3JfWzfS"
+				"bzz-raw://9fc286bb480fe058545011ab033d7e4550ca72eb857f3c4b511445fcbf24ae03",
+				"dweb:/ipfs/QmcqbDrT12apyCRCyZvZAPhGQ9dLzRLP6xLVuQ32yvsb1f"
+			]
+		},
+		"3-Consolidacion.sol": {
+			"keccak256": "0xa54e4f068b847056e96b4e223cf1a18a8b99d1364ef0cb3e7928113944cfac15",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6401f2a954c2ab5a07b7d1e79c7ecda76a5620dd68d95577b5dbe267f02b19ea",
+				"dweb:/ipfs/QmeuaGjG14rpr2VzuHYWB4yTZ5sFwGMkEmxGDQ6YNUQvaA"
 			]
 		}
 	},
